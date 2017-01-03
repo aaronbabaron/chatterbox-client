@@ -22,7 +22,8 @@
     <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-  </head>
+<!--     <script src="bower_components/jsesc/jsesc.js"></script>
+ -->  </head>
   <body>
     <div id="main">
       <h1>chatterbox</h1>
@@ -30,9 +31,10 @@
               <option value="Lobby">Lobby</option>
             </select>
             <br>
-    <form>        
+    <form onsubmit='return false'>        
       <input id="messageVal" type="text" placeholder="insert message here">
-      <button type='button' id="submitButton">Submit</button>
+      <input id="send" class="submit" type="submit" value="Submit">
+      <!-- <button type='button' id="submitButton">Submit</button> -->
     </form>
     </div>
     <div id="chats">
