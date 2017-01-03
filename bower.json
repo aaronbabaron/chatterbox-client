@@ -9,7 +9,7 @@
   "private": true,
   "dependencies": {
     "backbone": "~1.1.2",
-    "underscore": "^1.8.3",
+    "underscore": "~1.8.3",
     "jquery": "~2.1.1"
   },
   "ignore": [
@@ -18,5 +18,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "resolutions": {
+    "underscore": ">=1.5.0"
+  }
 }
