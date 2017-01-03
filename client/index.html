@@ -22,20 +22,22 @@
     <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-<!--     <script src="bower_components/jsesc/jsesc.js"></script>
- -->  </head>
+  </head>
   <body>
     <div id="main">
       <h1>chatterbox</h1>
       Room: <select id="roomSelect">
-              <option value="Lobby">Lobby</option>
+              <option value="createNewRoom">Create New Room</option>
+              <option value="lobby" selected='selected'>Lobby</option>
             </select>
+            <button type="button">Create New Tab</button>
             <br>
     <form onsubmit='return false'>        
       <input id="messageVal" type="text" placeholder="insert message here">
       <input id="send" class="submit" type="submit" value="Submit">
       <!-- <button type='button' id="submitButton">Submit</button> -->
     </form>
+    <div class='buttonWrap'><a class="tab" href='#'>Tab</a></div>
     </div>
     <div id="chats">
     </div>
