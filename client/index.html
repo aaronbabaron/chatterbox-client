@@ -21,12 +21,21 @@
     <!-- your scripts -->
     <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
   </head>
   <body>
     <div id="main">
       <h1>chatterbox</h1>
-      <!-- Your HTML goes here! -->
+      Room: <select id="roomSelect">
+              <option value="Lobby">Lobby</option>
+            </select>
+            <br>
+    <form>        
+      <input id="messageVal" type="text" placeholder="insert message here">
+      <button type='button' id="submitButton">Submit</button>
+    </form>
     </div>
-    <div id="chats"></div>
+    <div id="chats">
+    </div>
   </body>
 </html>
