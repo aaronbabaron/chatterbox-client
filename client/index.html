@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>chatterbox</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lobster" />
 
     <!-- dependencies -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -30,14 +32,14 @@
               <option value="createNewRoom">Create New Room</option>
               <option value="lobby" selected='selected'>Lobby</option>
             </select>
-            <button type="button">Create New Tab</button>
             <br>
-    <form onsubmit='return false'>        
-      <input id="messageVal" type="text" placeholder="insert message here">
-      <input id="send" class="submit" type="submit" value="Submit">
-      <!-- <button type='button' id="submitButton">Submit</button> -->
-    </form>
-    <div class='buttonWrap'><a class="tab" href='#'>Tab</a></div>
+      <form onsubmit='return false'>        
+        <input id="messageVal" type="text" placeholder="insert message here">
+        <input id="send" class="submit" type="submit" value="Submit">
+      </form>
+      <div class='buttonWrap'>
+        <a class="tab" href='#'>Lobby</a><a id='newTab' href='#'><i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i></a>
+      </div>
     </div>
     <div id="chats">
     </div>

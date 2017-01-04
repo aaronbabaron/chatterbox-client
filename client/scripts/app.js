@@ -12,7 +12,7 @@ class App {
       '\'': '&#39;',
       '/': '&#x2F;'
     };
-
+    this.friends = [];
   }
   
   escape(string) {
@@ -63,7 +63,8 @@ class App {
           }
         }
 
-        var filtered = data.results.filter(message => message.roomname ? message.roomname.toUpperCase() === $('#roomSelect').val().toUpperCase() : false);
+        var filtered = data.results.filter(message => message.roomname ? message.roomname.toUpperCase() === String($('#roomSelect').val()).toUpperCase() : false);
+        
         // var filtered = data.results;
         $('#chats').html('');
         for (let i = 0; i < filtered.length; ++i) {
@@ -81,7 +82,11 @@ class App {
   }
 
   renderMessage(message) {
-    $('#chats').append($('<div class="chat"><div class="username">' + this.escape(message.username) + ': </div>' + this.escape(message.text) + '</div>'));
+    var messageContainer = $('<div class="chat"><div class="username">' + this.escape(message.username) + ': </div>' + this.escape(message.text) + '</div>');
+    if (this.friends.indexOf(message.username) !== -1) {
+      messageContainer.css('font-weight', 800);
+    }
+    $('#chats').append(messageContainer);
   }
 
   renderRoom(room) {
@@ -99,7 +104,7 @@ class App {
       if (this.rooms.indexOf(room) === -1) {
         this.rooms.push(room);
       }
-      $('#roomSelect').append($('<option value=' + this.escape(room) + '>' + this.escape(room) + '</option>'));
+      $('#roomSelect').append($('<option value=' + this.escape(room).toLowerCase() + '>' + this.escape(room) + '</option>'));
     }
   }
 
@@ -116,12 +121,15 @@ class App {
 
   handleUsernameClick(clicked) {
     let name = clicked.html().slice(0, -2);
-    $('.username').each(function() {
-      if ($(this).html().slice(0, -2) === name) {
-        console.log($(this).html().slice(0, -2));
-        $(this).parent().css('font-weight', 800);
-      }
-    });
+    if (this.friends.indexOf(name) === -1) {
+      this.friends.push(name);
+    } 
+    // $('.username').each(function() {
+    //   if ($(this).html().slice(0, -2) === name) {
+    //     console.log($(this).html().slice(0, -2));
+    //     $(this).parent().css('font-weight', 800);
+    //   }
+    // });
   }
 }
 
@@ -157,10 +165,20 @@ $(document).ready(function() {
     } else {
       $('#chats').html('');
       app.fetch();
+      $('.active').text($(this).val());
     }
   });
+  
+  $('body').on('click', '.tab', function() {
+    $('#roomSelect').val($(this).text().toLowerCase());
 
+    $('.tab').removeClass('active');
+    $(this).addClass('active');
+  });
 
+  $('#newTab').on('click', function() {
+    $('#newTab').before('<a class="tab" href="#">' + 'New Tab' + '</a>');
+  });
 
 });
 
